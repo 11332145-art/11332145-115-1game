@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class bullet : MonoBehaviour
 {
@@ -26,6 +27,12 @@ public class bullet : MonoBehaviour
     {
         if (other.CompareTag("enemy"))
         {
+            Scoremanager scoreManager = FindObjectOfType<Scoremanager>();
+            if (scoreManager != null)
+            {
+                scoreManager.AddScore(10);
+            }
+
             Destroy(other.gameObject);
             Destroy(gameObject);
         }
